@@ -8,8 +8,9 @@
     --aqua: #86fbfb;
     --white: #f7f8fa;
     --font-size: 1.3rem;
-    --serif: 'DM Serif Display', serif;;
-    --sans: 'DM Sans', sans-serif;;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
+    --duration: 1s;
 }
 
 /* declaring box-sizing as border-box */
@@ -47,10 +48,19 @@ a:hover {
     text-decoration: none;
 }
 
+canvas {
+    display: block;
+    margin: 0 auto;
+    animation: slide-right 1s cubic-bezier(0.26,-0.01, 0, 1);
+}
+
 /* intro stlying */
 
 #intro {
+    margin-left: 2rem;
     padding-bottom: 10rem;
+    max-width: 100%;
+    animation: slide-left 1s cubic-bezier(0.26,-0.01, 0, 1);
 }
 
 #intro p {
@@ -110,11 +120,63 @@ nav ul {
 
 nav li:first-child {
     flex-basis: 100%;
-    /* text-align: center; */
+    text-align: center;
+}
+
+nav [class*='fa-']{
+    font-size: 150%;
+    color: var(--aqua);
+}
+
+nav h1 [class*='fa-'] {
+    font-size: 100%;
+    margin: 0rem 1rem;
 }
 
 nav a {
     color: var(--white);
     text-decoration: none;
     display: block;
+}
+
+nav a:hover, nav [class*='fa-']:hover {
+    color: var(--magenta);
+}
+
+@keyframes slide-right {
+    from {
+        transform: translateX(40vw);
+    }
+    to {
+        transform: translateX(0vw);
+    }
+}
+
+@keyframes slide-left {
+    from {
+        transform: translateX(-40vw);
+    }
+    to {
+        transform: translateX(0vw);
+    }
+}
+
+@media (min-width: 850px) {
+    nav {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    nav li:first-child {
+        flex-basis: auto;
+        text-align: left;
+        margin-right: auto;
+    }
+
+    canvas {
+        position: absolute;
+        top: 10%; left: 70%;
+        width: 100%;
+    }
+
 }
